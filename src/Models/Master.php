@@ -1,6 +1,6 @@
 <?php
 
-namespace Fahedaljghine\OptionJs\Models;
+namespace Fahedaljghine\Options\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Config ;
@@ -13,8 +13,8 @@ Class Master extends Model
     public function __construct()
     {
         parent::__construct();
-        $this->connection = Config::get('options.connection', 'db_connection_name');
-        $this->table = Config::get('options.' . $this->config_key, $this->default_table_name);
+        $this->connection = Config::get('options-js.db_connection_name');
+        $this->table = Config::get('options-js.' . $this->config_key, $this->default_table_name);
     }
 
 
