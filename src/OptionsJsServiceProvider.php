@@ -9,11 +9,17 @@ class OptionsJsServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $config = __DIR__.'/../config/config.php';
+
+        $configPath = __DIR__ . '/../config/config.php';
+        $configKey = 'options-js';
 
         $this->publishes([
-            $config => config_path('options-js.php'),
-        ], 'options');
+            $configPath => config_path("$configKey.php"),
+        ]);
+
+        $this->mergeConfigFrom(
+            $configPath, $configKey
+        );
     }
 
     public function register()

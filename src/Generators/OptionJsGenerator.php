@@ -5,7 +5,7 @@ namespace Fahedaljghine\OptionJs\Generators;
 use FahedAljghine\OptionJs\Models\Detail;
 use Illuminate\Filesystem\Filesystem as File;
 use JShrink\Minifier;
-use Illuminate\Support\Facades\Config;
+use Config ;
 
 class OptionJsGenerator
 {
@@ -19,11 +19,6 @@ class OptionJsGenerator
 
     protected $stringsDomain = 'strings';
 
-    /**
-     * Construct a new LangJsGenerator instance.
-     *
-     * @param File $file The file service instance.
-     */
     public function __construct(File $file)
     {
         $this->file = $file;
@@ -73,7 +68,7 @@ class OptionJsGenerator
     {
         $options = [];
 
-        $types = Config::get('options.types', []);
+        $types = Config('options.types', []);
 
         foreach ($types as $type) {
             if (is_int($type)) {

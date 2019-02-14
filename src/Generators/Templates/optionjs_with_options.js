@@ -1,6 +1,6 @@
-'{ langjs }';
+'{ optionjs }';
 
 (function () {
-    Lang = new Lang();
-    Lang.setMessages('{ messages }');
+    Option = new Option();
+    Option.setOptions('{ options }');
 })();

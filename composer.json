@@ -1,5 +1,5 @@
 {
-  "name": "fahedaljghine/laravel database options to js",
+  "name": "fahedaljghine/options-as-js",
   "description": "Laravel helper to generate options or settings stored in database to js file",
   "type": "library",
   "keywords": [
@@ -33,7 +33,6 @@
     "tedivm/jshrink": "1.0.*"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
   "extra": {
     "laravel": {
       "providers": [
@@ -43,7 +42,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Fahedaljghine\\OptionsJs\\": "src/"
+      "Fahedaljghine\\OptionsJs\\": "src"
     }
   }
 }

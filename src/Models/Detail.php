@@ -3,7 +3,7 @@
 namespace Fahedaljghine\OptionJs\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
+use Config ;
 
 Class Detail extends Model
 {
