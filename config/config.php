@@ -167,11 +167,11 @@ return [
         'units',
         'initiative_status',
         'persons_logs_causes',
-        'life_stages',
+        'life_stages'
     ],
 
     'models' => [
         'User',
-        'Relation',
+        'Relation'
     ],
 ];

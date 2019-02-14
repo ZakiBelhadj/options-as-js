@@ -2,69 +2,43 @@
 
 namespace Fahedaljghine\OptionJs\Commands;
 
-use Illuminate\Support\Facades\Config;
-use FahedAljghine\OptionJs\Generators\OptionJsGenerator;
+use Config;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-
+use FahedAljghine\OptionJs\Generators\OptionJsGenerator;
 
 class OptionJsCommand extends Command
 {
-    /**
-     * The command name.
-     *
-     * @var string
-     */
     protected $name = 'options:js';
 
-    /**
-     * The command description.
-     *
-     * @var string
-     */
     protected $description = 'Generate JS options file.';
 
-    /**
-     * The generator instance.
-     *
-     * @var OptionJsCommand
-     */
     protected $generator;
 
-    /**
-     * Construct a new LangJsCommand.
-     *
-     * @param OptionJsGenerator $generator The generator.
-     */
     public function __construct(OptionJsGenerator $generator)
     {
         $this->generator = $generator;
         parent::__construct();
     }
 
-    /**
-     * Fire the command. (Compatibility for < 5.0)
-     */
     public function fire()
     {
         $this->handle();
     }
 
-    /**
-     * Handle the command.
-     */
     public function handle()
     {
         $target = $this->argument('target');
-        $options = [
+
+        $settings = [
             'compress' => $this->option('compress'),
             'json' => $this->option('json'),
             'no-lib' => $this->option('no-lib'),
             'source' => $this->option('source'),
         ];
 
-        if ($this->generator->generate($target, $options)) {
+        if ($this->generator->generate($target, $settings)) {
             $this->info("Created: {$target}");
 
             return;
@@ -73,11 +47,6 @@ class OptionJsCommand extends Command
         $this->error("Could not create: {$target}");
     }
 
-    /**
-     * Return all command arguments.
-     *
-     * @return array
-     */
     protected function getArguments()
     {
         return [
@@ -85,21 +54,11 @@ class OptionJsCommand extends Command
         ];
     }
 
-    /**
-     * Return the path to use when no path is specified.
-     *
-     * @return string
-     */
     protected function getDefaultPath()
     {
         return Config::get('options-js.path', public_path('options.js'));
     }
 
-    /**
-     * Return all command options.
-     *
-     * @return array
-     */
     protected function getOptions()
     {
         return [

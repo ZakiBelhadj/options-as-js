@@ -29,18 +29,18 @@ class OptionJsGenerator
         $this->file = $file;
     }
 
-    public function generate($target, $config)
+    public function generate($target, $settings)
     {
-        if ($config['source']) {
-            $this->sourcePath = $config['source'];
+        if ($settings['source']) {
+            $this->sourcePath = $settings['source'];
         }
 
         $options = $this->getOptions();
         $this->prepareTarget($target);
 
-        if ($options['no-lib']) {
+        if ($settings['no-lib']) {
             $template = $this->file->get(__DIR__ . '/Templates/options.js');
-        } else if ($options['json']) {
+        } else if ($settings['json']) {
             $template = $this->file->get(__DIR__ . '/Templates/options.json');
         } else {
             $template = $this->file->get(__DIR__ . '/Templates/optionjs_with_options.js');
@@ -50,7 +50,7 @@ class OptionJsGenerator
 
         $template = str_replace('\'{ options }\'', json_encode($options), $template);
 
-        if ($config['compress']) {
+        if ($settings['compress']) {
             $template = Minifier::minify($template);
         }
 
@@ -95,6 +95,8 @@ class OptionJsGenerator
                 $options[$model] = $model_name::get();
             }
         }
+
+        $this->sortOptions($options);
 
         return $options;
     }
