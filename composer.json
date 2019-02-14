@@ -1,0 +1,51 @@
+{
+  "name": "fahedaljghine/laravel database options to js",
+  "description": "Laravel helper to generate options or settings stored in database to js file",
+  "type": "library",
+  "keywords": [
+    "laravel",
+    "laravel 5",
+    "options",
+    "i18n",
+    "javascript",
+    "js",
+    "settings"
+  ],
+  "homepage": "https://github.com/fahedaljghine/options-as-js",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fahed Aljghine",
+      "email": "f.aljghine@syriaturst.sy",
+      "homepage": "https://github.com/fahedaljghine",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/fahedaljghine/options-as-js/issues",
+    "source": "https://github.com/fahedaljghine/options-as-js"
+  },
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/config": ">=4.2",
+    "illuminate/console": ">=4.2",
+    "illuminate/filesystem": ">=4.2",
+    "tedivm/jshrink": "1.0.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*"
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Fahedaljghine\\OptionsJs\\OptionsJsServiceProvider"
+      ]
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Fahedaljghine\\OptionsJs\\": "src/"
+    }
+  }
+}
