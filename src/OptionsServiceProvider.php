@@ -10,8 +10,11 @@ class OptionsServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
         $configPath = __DIR__ . '/../config/config.php';
         $configKey = 'options-js';
+
 
         $this->publishes([
             $configPath => config_path("$configKey.php"),
